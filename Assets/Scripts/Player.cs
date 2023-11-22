@@ -1,29 +1,38 @@
 using UnityEngine;
 
-public class Player
+public class Player: PlayableObject
 {
     private string nickName;
-    private float speed;
+    [SerializeField] private Camera cam;
+    [SerializeField] private float speed;
 
-    public Health health = new Health();
+    private Rigidbody2D playerRB;
 
-    public void Move(Vector3 direction)
-    {
-        Debug.Log($"Moving towards {direction}");
-    }
-
-    public void Move()
-    {
-        Debug.Log($"Player Moving");
-    }
-
-    public void Shoot(Vector3 direction, float speed)
+    public override void Shoot(Vector3 direction, float speed)
     {
         Debug.Log($"Shooting a bullet towards {direction} with a speed of {speed}");
     }
 
-    public void Die()
+    public override void Die()
     {
-        Debug.Log("Player Died");
+
+    }
+
+    public override void Move(Vector2 direction, Vector2 target)
+    {
+        playerRB.velocity = direction * speed * Time.deltaTime;
+        var playerScreenPos = cam.WorldToScreenPoint(transform.position);
+
+        //TODO: Target and Rotation
+    }
+
+    public override void Attack(float interval)
+    {
+
+    }
+
+    public override void GetDamage(float damage)
+    {
+
     }
 }

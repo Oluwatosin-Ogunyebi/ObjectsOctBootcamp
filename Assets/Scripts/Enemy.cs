@@ -1,35 +1,40 @@
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
-public class Enemy
+public class Enemy : PlayableObject
 {
     private string enemyName;
     private float speed;
     private EnemyType enemyType;
-    public Health health = new Health();
 
-    public void Move(Transform target)
-    {
-        Debug.Log($"Moving towardss the target {target.name}");
-    }
 
-    public void Shoot(Vector3 direction, float speed)
-    {
+    public override void Shoot(Vector3 direction, float speed)
+    {   
         Debug.Log($"Shooting a bullet towards {direction} with a speed of {speed}");
     }
 
-    public void Die()
+    public override void Die()
     {
         Debug.Log("Player Died");
     }
 
-    public void Attack(float interval)
-    {
+    public override void Attack(float interval)
+    {   
         Debug.Log($"Enemy attacking with a {interval} interval");
     }
 
     public void SetEnemyType(EnemyType _enemyType)
     {
         enemyType = _enemyType;
+    }
+
+    public override void Move(Vector2 direction, Vector2 target)
+    {
+
+    }
+
+    public override void GetDamage(float damage)
+    {
+
     }
 }
