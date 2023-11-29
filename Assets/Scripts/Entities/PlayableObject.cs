@@ -8,7 +8,7 @@ public abstract class PlayableObject : MonoBehaviour, IDamageable
 
     public abstract void Move(Vector2 direction, Vector2 target);
 
-    public abstract void Shoot(Vector3 direction, float speed);
+    public abstract void Shoot();
 
     public abstract void Die();
 

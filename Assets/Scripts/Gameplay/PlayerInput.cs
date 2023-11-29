@@ -20,5 +20,15 @@ public class PlayerInput : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
         lookTarget = Input.mousePosition;
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            player.Shoot();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        player.Move(new Vector2(horizontal, vertical), lookTarget);
     }
 }
