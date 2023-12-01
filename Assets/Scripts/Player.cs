@@ -46,6 +46,6 @@ public class Player: PlayableObject
 
     public override void GetDamage(float damage)
     {
-
+        Debug.Log("Player Damaged!");
     }
 }
