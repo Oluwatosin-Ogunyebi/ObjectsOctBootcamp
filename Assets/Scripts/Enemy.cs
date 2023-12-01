@@ -32,7 +32,8 @@ public class Enemy : PlayableObject
 
     public override void Die()
     {
-        Debug.Log("Player Died");
+        Debug.Log("Enemy Died");
+        Destroy(gameObject);
     }
 
     public override void Attack(float interval)
