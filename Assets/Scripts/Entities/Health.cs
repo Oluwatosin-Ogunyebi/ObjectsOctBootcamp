@@ -24,15 +24,21 @@ public class Health
     {
         maxHealth = _maxHealth;
     }
-
+    public void RegenerateHealth()
+    {
+        if (currentHealth < maxHealth/2)
+        {
+            AddHealth(healthRegenRate * Time.deltaTime);
+        }
+    }
     public void AddHealth(float valueToAdd)
     {
-        currentHealth += valueToAdd;
+        currentHealth = Mathf.Max(maxHealth, currentHealth + valueToAdd);
     }
 
     public void DeductHealth(float valueToDeduct)
     {
-        currentHealth -= valueToDeduct;
+        currentHealth =  Mathf.Min(0,currentHealth - valueToDeduct);
     }
 
     public float GetHealth()

@@ -23,6 +23,10 @@ public class Player: PlayableObject
         health = new Health(100f, 100f, 0.5f);
         playerRB = GetComponent<Rigidbody2D>();
     }
+    private void Update()
+    {
+        health.RegenerateHealth();
+    }
 
     public override void Move(Vector2 direction, Vector2 target)
     {
