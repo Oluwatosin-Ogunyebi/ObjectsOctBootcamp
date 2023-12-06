@@ -6,10 +6,16 @@ public class Player: PlayableObject
     [SerializeField] private Camera cam;
     [SerializeField] private float speed;
 
+
+    [SerializeField] private float weaponDamage = 1;
+    [SerializeField] private float bulletSpeed = 10.0f;
+    [SerializeField] private Bullet bulletPrefab;
+
     private Rigidbody2D playerRB;
 
     public override void Shoot()
     {
+        weapon.Shoot(bulletPrefab, this, "Enemy");
         Debug.Log($"Player is shooting a bullet");
     }
 
@@ -22,6 +28,9 @@ public class Player: PlayableObject
     {
         health = new Health(100f, 100f, 0.5f);
         playerRB = GetComponent<Rigidbody2D>();
+
+        //Set Player Weapon
+        weapon =  new Weapon("Player Weapon", weaponDamage, bulletSpeed);
     }
     private void Update()
     {
