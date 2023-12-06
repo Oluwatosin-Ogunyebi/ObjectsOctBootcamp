@@ -28,5 +28,6 @@ public class Weapon
     public float GetDamage()
     {
         return damage;
+
     }
 }
