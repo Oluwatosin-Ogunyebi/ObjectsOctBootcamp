@@ -21,14 +21,15 @@ public class Player: PlayableObject
 
     public override void Die()
     {
-
+        Debug.Log("Player is Dead");
+        Destroy(this.gameObject);
     }
 
     private void Start()
     {
         health = new Health(100f, 100f, 0.5f);
         playerRB = GetComponent<Rigidbody2D>();
-
+        Debug.Log("Player health value is " + health.GetHealth());
         //Set Player Weapon
         weapon =  new Weapon("Player Weapon", weaponDamage, bulletSpeed);
     }
@@ -59,6 +60,11 @@ public class Player: PlayableObject
 
     public override void GetDamage(float damage)
     {
-        Debug.Log("Player Damaged!");
+        health.DeductHealth(damage);
+        if (health.GetHealth() <= 0)
+        {
+            Die();
+        }
+        Debug.Log($"Player Damaged! Remaining Health is {health.GetHealth()}");
     }
 }
